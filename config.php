@@ -1,6 +1,6 @@
 <?php
-define('servername', 'localhost');
-define('username', 'root');
-define('password', '');
-define('dbname', 'blogdb');
+$servername='localhost';
+$username='root';
+$password='';
+$dbname='users';
 ?>

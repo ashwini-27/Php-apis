@@ -2,10 +2,10 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname="blogdb";
+$dbname="users";
 $conn = new mysqli($servername, $username, $password,$dbname);
 
-if(isset($_SERVER['REQUEST_METHOD'] === 'POST'))
+if($_SERVER['REQUEST_METHOD'] === 'POST')
 {
     if ($conn->connect_error)
     {
@@ -14,9 +14,14 @@ if(isset($_SERVER['REQUEST_METHOD'] === 'POST'))
     }
     else
     {
-      $ps=$_POST["userpass"];
-      $mail=$_POST["useremail"];
-      $sql=" SELECT * FROM userinfo WHERE password= '$ps' AND email='$mail' ";
+
+      if (isset($_POST["pass"])&&isset($_POST["email"])) {
+        # code...
+      
+      $ps=$_POST["pass"];
+      $mail=$_POST["email"];
+
+      $sql=" SELECT * FROM details WHERE password= '$ps' AND email='$mail' ";
       $result=$conn->query($sql);
       if ($result->num_rows>0) 
       {
@@ -30,13 +35,20 @@ if(isset($_SERVER['REQUEST_METHOD'] === 'POST'))
           echo json_encode("user not found");
       }
     }
+    else
+    {
+      echo "qwery fields error";
+    }
+  }
 
+}
+else
+{
+  echo "qwery error";
 }
 
 $conn->close();
 
 ?> 
-    </body>
-</html>
 
 

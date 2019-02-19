@@ -1,16 +1,23 @@
 <?php
-	require__once 'config.php';
+	
 
-	/**
-	* 
-	*/
-	class DbConnection extends AnotherClass
+	
+
+	class DbConnection 
 	{
+
+
 		
 		private $connection;
-
-		function __construct(argument)
+		private $servern;
+		function __construct()
 		{
+				require 'config.php';
+			// $servern=$servername;
+		// 	$servername='localhost';
+		// $username='root';
+		// $password='';
+		// $dbname='users';
 			$this->connection=new mysqli($servername, $username, $password,$dbname) or die("Connection failed: " . $conn->connect_error);
 		}
 		
